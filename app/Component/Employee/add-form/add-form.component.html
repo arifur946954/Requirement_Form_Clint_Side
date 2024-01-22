@@ -1,0 +1,306 @@
+<section class="vh-800" style="background-color: #508bfc;">
+    <div >
+      <div >
+        <div>
+          <div >
+            <div >
+              <!-- outer class -->
+              <div class="container-details">
+                <form [formGroup]="EmployeeForm"   (ngSubmit)="AddEmployee()" class="container   col-sm-10">
+                  <div class="container my-5" >
+                      <h1 class="mb-3 h3 text-center">Recruitment Form City (Flour & Salt)</h1>
+                      <hr>
+                      <p> সিটি গ্রুপের (ফ্লাওয়ার & সল্ট) এ আবেদনের আগ্রহ প্রকাশ করার জন্য আপনাকে ধন্যবাদ জানাচ্ছি।
+                        ফরম পুরনের কিছু নিওম নিচে দেওয়া হল। </p>
+                       
+                        <ul>
+                          <li>১.সব তথ্য ইংরেজিতে পুরন করতে হবে।</li>
+                          <li>২. ফরমের তথ্য গুলা এন আই ডি কার্ডের বানানের সাথে মিল রেখে পুরন করতে হবে।</li>
+                          <li>৩. ফর্মে পুরনকৃত ইন্টারভিউ এর তারিখেই প্রার্থী কে আসতে হবে।</li>
+                          <li>৪. ইন্টারভিউ এর দিনে আপডেটেড সিভি শিক্ষাগত সার্টিফিকেট এর কপি নিয়ে আসতে হবে।</li>
+                          <hr>
+                          <li>৫. আপনি যদি সিলেক্টেড হন তাহকে জয়েন করার দিন এন আই ডি কার্ডের অরজিনাল কপি সাথে নিয়ে আসতে হবে।</li>
+                        </ul>
+                      
+                  </div>
+              
+                    <div class="mb-3">
+                    <label for="mobile"  class="form-label">Mobile Number</label>
+                    <input formControlName="mobilenumber" type="number"name="mobilenumber"
+                     class="form-control"   id="mobilenumber" aria-describedby="emailHelp" required>
+                     <div  *ngIf="EmployeeForm.controls['mobilenumber'].dirty && EmployeeForm.hasError('required', 'mobilenumber')" 
+                     class="text-danger">*Mobile Number is required</div>     </div>
+                 
+                    
+
+
+                     <div class="mb-3">
+                        <label for="name"  class="form-label">Name</label>
+                        <input formControlName="name" type="text"name="name"
+                         class="form-control"   id="name" aria-describedby="emailHelp" required>
+                         <div  *ngIf="EmployeeForm.controls['name'].dirty && EmployeeForm.hasError('required', 'name')" 
+                         class="text-danger">*Name is required</div>         </div>
+                 
+                        
+
+                         <div class="mb-3">
+                            <label for="fathername"  class="form-label">Father Name</label>
+                            <input formControlName="fathername" type="text"name="fathername"
+                             class="form-control"   id="fathername" aria-describedby="emailHelp" required>
+                             <div  *ngIf="EmployeeForm.controls['fathername'].dirty && EmployeeForm.hasError('required', 'fathername')" 
+                             class="text-danger">*fathername is required</div>   </div>                      
+                            
+                            
+                             
+                             <div class="mb-3">
+                                <label for="mothername"  class="form-label">Mother Name</label>
+                                <input formControlName="mothername" type="text"name="mothername"
+                                 class="form-control"   id="mothername" aria-describedby="emailHelp" required>
+                                 <div *ngIf="EmployeeForm.controls['mothername'].dirty && EmployeeForm.hasError('required', 'mothername')" 
+                                 class="text-danger">*mothername is required</div>  </div>
+                                
+                                 
+                                 
+                                 <div class="mb-3">
+                                    <label for="nid"  class="form-label">NID</label>
+                                    <input formControlName="nid" type="number"name="nid"
+                                     class="form-control"   id="nid" aria-describedby="emailHelp" required>
+                                     <div *ngIf="EmployeeForm.controls['nid'].dirty && EmployeeForm.hasError('required', 'nid')" 
+                                     class="text-danger">*NID is required</div>    </div>
+                                     
+                                  
+
+                                     <div class="mb-3">
+                                        <label for="dateofbirthd"  class="form-label">Date of Birthd</label>
+                                        <input formControlName="dateofbirthd" type="date"name="dateofbirthd"
+                                         class="form-control"   id="dateofbirthd" aria-describedby="emailHelp" required>
+                                      <div   *ngIf="EmployeeForm.controls['dateofbirthd'].dirty && EmployeeForm.hasError('required', 'dateofbirthd')" 
+                                         class="text-danger">*dateofbirthd is required</div>    </div>
+                                      
+
+                                         <div class="mb-3">
+                                            <label for="birthplace"  class="form-label">Birth Place</label>
+                                            <input formControlName="birthplace" type="text"name="birthplace"
+                                             class="form-control"   id="birthplace" aria-describedby="emailHelp" required>
+                                             <div *ngIf="EmployeeForm.controls['birthplace'].dirty && EmployeeForm.hasError('required', 'birthplace')" 
+                                             class="text-danger">*birthplace is required</div>   </div>
+                                          
+
+                                             <div class="mb-3">
+                                                <label for="religion"  class="form-label">Religion</label>
+                                                <input formControlName="religion" type="text"name="religion"
+                                                 class="form-control"   id="religion" aria-describedby="emailHelp" required>
+                                                 <div *ngIf="EmployeeForm.controls['religion'].dirty && EmployeeForm.hasError('required', 'religion')" 
+                                                 class="text-danger">*religion is required</div></div>
+
+
+                                               <div class="mb-3">
+                                                <label for="bloodgroup"  class="form-label">Blood Group</label>
+                                                <input formControlName="bloodgroup" type="text"name="bloodgroup"
+                                                 class="form-control"   id="bloodgroup" aria-describedby="emailHelp" required>
+                                                 <div *ngIf="EmployeeForm.controls['bloodgroup'].dirty && EmployeeForm.hasError('required', 'bloodgroup')" 
+                                                 class="text-danger">*bloodgroup is required</div></div>    
+                                                 
+                                                 <div class="mb-3">
+                                                    <label for="gender"  class="form-label">Gender</label>
+                                                    <input formControlName="gender" type="text"name="gender"
+                                                     class="form-control"   id="gender" aria-describedby="emailHelp" required>
+                                                     <div *ngIf="EmployeeForm.controls['gender'].dirty && EmployeeForm.hasError('required', 'gender')" 
+                                                     class="text-danger">*Gender is required</div></div>
+
+                                                     <!-- <div class="mb-3">
+                                                        <label for="maritalstatus"  class="form-label">Marital Status</label>
+                                                        <input formControlName="maritalstatus" type="text"name="maritalstatus"
+                                                         class="form-control"   id="maritalstatus" aria-describedby="emailHelp" required>
+                                                         <div *ngIf="EmployeeForm.controls['maritalstatus'].dirty && EmployeeForm.hasError('required', 'maritalstatus')" 
+                                                         class="text-danger">*maritalstatus is required</div></div> -->
+
+
+
+                                                           <!-- <div class="mb-3">
+                                                            <label for="maritalstatus">Marital Status:</label>
+                                                            <select id="maritalstatus" formControlName="maritalStatus" [class.invalid]="EmployeeForm.get('maritalStatus').hasError('required')">
+                                                              <option *ngFor="let status of maritalStatusOptions" [value]="status">{{ status }}</option>
+                                                            </select>
+                                                            <div *ngIf="EmployeeForm.get('maritalStatus').hasError('required')" class="error-message">
+                                                              Marital Status is required.
+                                                            </div>
+                                                            </div>  -->
+
+
+                                                            <div class="mb-3">
+                                                                <label for="maritalstatus">Marital Status:</label>
+                                                                <select id="maritalstatus" formControlName="maritalStatus" >
+                                                                  <option *ngFor="let status of maritalStatusOptions" [value]="status">{{ status }}</option>
+                                                                  
+                                                                </select>
+
+
+                                                                
+
+
+
+
+
+
+                                                               
+                                                                </div> 
+
+
+
+
+                                                         <div class="mb-3">
+                                                            <label for="spousename"  class="form-label">Spouse Name</label>
+                                                            <input formControlName="spousename" type="text"name="spousename"
+                                                             class="form-control"   id="spousename" aria-describedby="emailHelp" required>
+                                                             <div *ngIf="EmployeeForm.controls['spousename'].dirty && EmployeeForm.hasError('required', 'spousename')" 
+                                                             class="text-danger">*Spouse Name is required</div></div>
+
+
+                                                             <div class="mb-3">
+                                                                <label for="email"  class="form-label">Email</label>
+                                                                <input formControlName="email" type="email"name="email"
+                                                                 class="form-control"   id="email" aria-describedby="emailHelp" required>
+                                                                 <div *ngIf="EmployeeForm.controls['email'].dirty && EmployeeForm.hasError('required', 'email')" 
+                                                                 class="text-danger">*Email is required</div></div>
+
+                                                               
+                                                                 <!-- <div formArrayName="presentaddresses">
+                                                                    <div *ngFor="let presentAddress of presentaddresses.controls; let i = index">
+                                                                      <label for="division">Division:</label>
+                                                                      <input type="text" id="division" [formControl]="presentAddress.get('division')">
+                                                                
+                                                                      <label for="district">District:</label>
+                                                                      <input type="text" id="district" [formControl]="presentAddress.get('district')">
+                                                                    </div>
+                                                                  </div>  -->
+
+
+                                                                
+
+                                                                <div class="address">
+                                                                    <h3>Address</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-2"></div>
+                                                                        <div class="col-md-2">Division</div>
+                                                                        <div class="col-md-2">District</div>
+                                                                        <div class="col-md-2">Thana</div>
+                                                                        <div class="col-md-2">Post Office</div>
+                                                                        <div class="col-md-2">Village</div>
+                                                                      </div>
+
+
+
+                                                                      <!-- <div   class="presentAddress">
+                                                                        <div class="row">
+                                                                            <div class="col-md-2">Present Address</div>
+                                                                            <div class="col-md-2">
+                                                                                <div formGroupName="presentaddresses" class="mb-3">
+                                                                                    
+                                                                                   <input formControlName="division" type="text"name="division"
+                                                                                     class="form-control"   id="division" aria-describedby="emailHelp">
+                                                                                 <div *ngIf="EmployeeForm.controls['division'].dirty && EmployeeForm.hasError('required', 'division')" 
+                                                                                     class="text-danger">*dDvision is required</div>
+                                                                                    </div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                 
+                                                                                    <input formControlName="district" type="text"name="District"
+                                                                                     class="form-control"   id="district" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['district'].dirty && EmployeeForm.hasError('required', 'district')" 
+                                                                                     class="text-danger">*District is required</div></div>
+                                                                            </div>
+                                                                           <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                    
+                                                                                    <input formControlName="thana" type="text"name="thana"
+                                                                                     class="form-control"   id="thana" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['thana'].dirty && EmployeeForm.hasError('required', 'thana')" 
+                                                                                     class="text-danger">*Thana is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                  
+                                                                                    <input formControlName="postoffice" type="text"name="postoffice"
+                                                                                     class="form-control"   id="postoffice" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['postoffice'].dirty && EmployeeForm.hasError('required', 'postoffice')" 
+                                                                                     class="text-danger">*Postoffice is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                  
+                                                                                    <input formControlName="village" type="text"name="village"
+                                                                                     class="form-control"   id="village" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['village'].dirty && EmployeeForm.hasError('required', 'village')" 
+                                                                                     class="text-danger">*village is required</div></div>
+                                                                            </div> 
+                                                                           
+                                                                          </div>
+                                                                    </div> -->
+
+                                                                    <!-- <div class="ParmanentAddress">
+                                                                        <div class="row">
+                                                                            <div class="col-md-2">Parmanent Address</div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                   
+                                                                                    <input formControlName="parmanentaddresses.division" type="text"name="division"
+                                                                                     class="form-control"   id="division" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['division'].dirty && EmployeeForm.hasError('required', 'parmanentaddresses.division')" 
+                                                                                     class="text-danger">*Dvision is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                   
+                                                                                    <input formControlName="parmanentaddresses.District" type="text"name="District"
+                                                                                     class="form-control"   id="district" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['district'].dirty && EmployeeForm.hasError('required', 'district')" 
+                                                                                     class="text-danger">*District is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                   
+                                                                                    <input formControlName="parmanentaddresses.thana" type="text"name="thana"
+                                                                                     class="form-control"   id="thana" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['thana'].dirty && EmployeeForm.hasError('required', 'thana')" 
+                                                                                     class="text-danger">*Thana is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                   
+                                                                                    <input formControlName="parmanentaddresses.postoffice" type="text"name="division"
+                                                                                     class="form-control"   id="postoffice" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['postoffice'].dirty && EmployeeForm.hasError('required', 'postoffice')" 
+                                                                                     class="text-danger">*Postoffice is required</div></div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="mb-3">
+                                                                                   
+                                                                                    <input formControlName="parmanentaddresses.village" type="text"name="village"
+                                                                                     class="form-control"   id="village" aria-describedby="emailHelp" required>
+                                                                                     <div *ngIf="EmployeeForm.controls['village'].dirty && EmployeeForm.hasError('required', 'village')" 
+                                                                                     class="text-danger">*village is required</div></div>
+                                                                            </div>
+                                                                           
+                                                                          </div>
+                                                                    </div> -->
+
+                                                                  
+                                                                   </div>
+                                                               
+
+
+                                                               
+                  
+                  <button type="submit" class="btn btnb btn-primary btn-lg btn-block">Submit</button>
+                </form>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

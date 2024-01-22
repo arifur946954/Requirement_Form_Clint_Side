@@ -1,0 +1,70 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.first-column{
+    width: 120px;
+}
+.workExperience{
+    margin-top: 10px;
+}
+
+.dropDown{
+    margin-left: 30px;
+}
+
+
+.outer{
+   
+    background: linear-gradient(to top,rgb(98, 104, 103) 50%, #706e6f 90%) no-repeat;
+   height: 1000;
+  
+}
+.container{
+    border: 2px solid gray;
+    /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+    background: white;
+    border-radius: 10px;
+    padding-bottom: 40px;
+    
+}
+.container-details{
+    padding-top: 20px;
+   
+}
+.inner{
+ background-color: white;
+ width: 30%;
+ align-items: center;
+           border-radius: 2%;
+           padding: 15px;
+    
+}
+
+.btnb{
+    padding: 10px;
+    background-color: #0056b3;
+    width: 80%;
+    
+    text-align: center;
+    border-radius: 5px;
+    color:white ;
+    transition:  0.5s;
+    margin-top: 20px;
+    margin-left: 120px;
+
+   
+}
+.btnb:hover {
+    background-color: blue; /* Background color on hover */
+}
+
+
+.font-weight-bold{
+    font-weight: bold;
+    font-size: 18px;
+}

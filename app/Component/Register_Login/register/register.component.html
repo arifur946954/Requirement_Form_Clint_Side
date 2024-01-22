@@ -1,0 +1,102 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="">
+                            <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="container">
+                              <div class="container my-5" >
+                               
+                                  <h1 class="mb-3 h3 text-center">Register Now</h1>
+                              </div>
+                        
+                                     <div class="mb-3">
+                                        <label for="mobilenumber" class="form-label"></label>
+                                        <input class="form-control"  formControlName="mobilenumber" placeholder="Mobile Number" type="tel" 
+                                       class="form-control"  id="mobilenumber" aria-describedby="emailHelp" >
+
+                                    <div
+                                    *ngIf="registerForm.controls['mobilenumber'].dirty && registerForm.hasError('required', 'mobilenumber')" 
+                                   class="text-danger">
+                                   *Mobile Number is required
+                                 </div>
+                                   
+
+
+                                      </div>
+
+                                         <div class="mb-3">
+                                            <label for="name" class="form-label"></label>
+                                            <input formControlName="name" placeholder="Full Name" type="text" 
+                                           class="form-control"  id="name" aria-describedby="emailHelp" >
+
+                                           <div
+                                           *ngIf="registerForm.controls['name'].dirty && registerForm.hasError('required', 'name')" 
+                                          class="text-danger">
+                                          *Name is required
+                                        </div>
+                                             </div>
+
+                                             <div class="mb-3">
+                                                <label for="email" class="form-label"></label>
+                                                <input formControlName="email" placeholder="Email" type="email" 
+                                               class="form-control"  id="email" aria-describedby="emailHelp" >
+
+                                               <div
+                                               *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')" 
+                                              class="text-danger">
+                                              *Email is required
+                                            </div>
+                                       
+
+
+                                                 </div>
+
+                                                 <div class="mb-3">
+                                                    <label for="password" class="form-label"></label>
+                                                    <input formControlName="password" placeholder="Password" type="password" 
+                                                   class="form-control"  id="password" aria-describedby="emailHelp" >
+
+                                                   <div
+                                                   *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')" 
+                                                  class="text-danger">
+                                                  *Password is required
+                                                </div>
+                                                     </div>
+                                       
+
+                                         
+                                        
+                        
+                                       
+                        
+                                           
+                                             <button   class="btnb btn btn-primary">Submit</button>
+                                             <!-- <button  (click)="onSubmit()" type="button">submit</button> -->
+                                             <!-- <button [disabled]="loginForm.invalid" type="submit" class="btnb">Submit</button> -->
+
+                              </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

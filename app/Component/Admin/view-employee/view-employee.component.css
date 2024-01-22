@@ -1,0 +1,51 @@
+content{
+    width: 595px;
+    height: 800px;
+}
+
+.CvDetails{
+    margin-left: 50px;
+    margin-top: 5px;
+    padding: 2%;
+    margin-right: 80px;
+    border: 1px solid gray;
+    border-radius: 1%;
+}
+.Multiple-Column{
+    padding-top: 30px;
+
+}
+.post-class{
+    font-weight: bold;
+}
+.resume-name{
+    background-color: lightgray;
+    border-radius: 2%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.heading-line{
+    background-color: lightgray;
+}
+.btn-makePDF{
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.img-small {
+    height: 100px;
+    width: 100px;
+  }
+
+
+  .imagecontrol_cv{
+    margin-right: 100px;
+    border-radius: 2%;
+  }
+  .main-Content{
+    display: flex;
+  }
+  .imagecontrol{
+    
+    margin-left: 550px;
+  }

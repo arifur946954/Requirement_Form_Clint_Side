@@ -1,0 +1,791 @@
+
+<!-- <div><h1>hello user {{email}}</h1></div> -->
+<div><h1>{{retrievedData | json}}</h1></div>
+<!-- <div><h2>{{emails}}</h2></div> -->
+
+<div *ngIf="EmailLength > 0; else showForm">
+  <h1 class="text-danger">You are Allready Registered please try another Email</h1>
+
+</div>
+<ng-template #showForm>
+
+<section class="vh-800" style="background-color: #508bfc;">
+    <div >
+      <div >
+        <div>
+          <div >
+            <div >
+              <!-- outer class -->
+              <div>
+               
+              </div>
+              <div class="container-details">
+                <form class="container   col-sm-10"
+                
+               #form="ngForm" (ngSubmit)="addEmployee()">
+                  <div class="container my-5" >
+                      <h1 class="mb-3 h3 text-center">Recruitment Form </h1>
+                     
+                      <hr>
+                      <p>  আবেদনের আগ্রহ প্রকাশ করার জন্য আপনাকে ধন্যবাদ জানাচ্ছি।
+                        ফরম পুরনের কিছু নিওম নিচে দেওয়া হল। </p>
+                       
+                        <ul>
+                          <li>১.সব তথ্য ইংরেজিতে পুরন করতে হবে।</li>
+                          <li>২. ফরমের তথ্য গুলা এন আই ডি কার্ডের বানানের সাথে মিল রেখে পুরন করতে হবে।</li>
+                          <li>৩. ফর্মে পুরনকৃত ইন্টারভিউ এর তারিখেই প্রার্থী কে আসতে হবে।</li>
+                          <li>৪. ইন্টারভিউ এর দিনে আপডেটেড সিভি শিক্ষাগত সার্টিফিকেট এর কপি নিয়ে আসতে হবে।</li>
+                          <hr>
+                          <li>৫. আপনি যদি সিলেক্টেড হন তাহকে জয়েন করার দিন এন আই ডি কার্ডের অরজিনাল কপি সাথে নিয়ে আসতে হবে।</li>
+                        </ul>
+                      
+                  </div>
+
+                 
+              
+                    <div class="mb-3">
+                    <label for="mobile"  class="form-label">Mobile Number</label>
+                    
+                  <input (change)="SameAsEmail()" type="text"name="mobile" [(ngModel)]="addEmployeeRequest.mobilenumber"
+                     class="form-control"   id="mobile" aria-describedby="emailHelp">
+                     
+                    
+                    </div>
+                 
+
+                     <div  >
+
+                     
+
+                        
+
+                     </div>
+                     <!-- // [(ngModel)]="email" -->
+
+                     <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input   disabled="email" name="email" type="email"name="email" [(ngModel)]="addEmployeeRequest.email"   
+                          class="form-control"  id="email" aria-describedby="emailHelp">
+                       </div>
+              
+                     <div class="mb-3">
+                      <label for="FullName" class="form-label">Full Name</label>
+                      <input type="text"name="FullName" [(ngModel)]="addEmployeeRequest.name"
+                       class="form-control"  id="FullName" aria-describedby="emailHelp">
+                       </div>
+              
+                       <div class="mb-3">
+                        <label for="fatherName" class="form-label">Father Name</label>
+                        <input type="text"name="fatherName"  [(ngModel)]="addEmployeeRequest.fathername"
+                         class="form-control"  id="fatherName" aria-describedby="emailHelp">
+                         </div>
+              
+                         <div class="mb-3">
+                          <label for="motherName" class="form-label">Mother Name</label>
+                          <input type="text"name="motherName" [(ngModel)]="addEmployeeRequest.mothername"
+                           class="form-control"  id="motherName" aria-describedby="emailHelp">
+                           </div>
+
+
+                           
+
+
+
+
+
+              
+                           <div class="mb-3">
+                            <label for="nid" class="form-label">NID</label>
+                            <input type="number"name="nid" [(ngModel)]="addEmployeeRequest.nid"
+                             class="form-control"  id="nid" aria-describedby="emailHelp">
+                             </div>
+              
+                             <div class="mb-3">
+                              <label for="dateOfBirth" class="form-label">Date Of Birth</label>
+                              <input  type="date"name="dateOfBirth" [(ngModel)]="addEmployeeRequest.dateofbirthd "
+                               class="form-control"  id="dateOfBirth" aria-describedby="emailHelp">
+                               </div>
+              
+                               <div class="mb-3">
+                                <label for="birthPlace" class="form-label">Birth Place</label>
+                                <input type="text"name="birthPlace" [(ngModel)]="addEmployeeRequest.birthplace"
+                                 class="form-control"  id="birthPlace" aria-describedby="emailHelp">
+                                 </div>
+              
+                                 <div class="mb-3">
+                                  <label for="religion" class="form-label">Religion</label>
+                                  <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.religion"
+                                  #maritalStatus="ngModel">
+                            <option value="">Select</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Christianity">Christianity</option>
+                            <option value="Buddhism">Buddhism</option>
+                            <option value="Other">Other</option>
+                          </select>
+                                   </div>
+              
+                                   <div class="mb-3">
+                                    <label  for="bloodGroup" class="form-label">Blood Group</label>
+                                    <select class="dropDown" id="bloodGroup" name="bloodGroup" [(ngModel)]="addEmployeeRequest.bloodgroup"
+                                    #maritalStatus="ngModel">
+                              <option value="">Select</option>
+                              <option value="A+">A+</option>
+                              <option value="O+">O+</option>
+                              <option value="B+">B+</option>
+                              <option value="AB+">AB+</option>
+                              
+                              <option value="A-">A-</option>
+                              <option value="O-">O-</option>
+                              <option value="B-">B-</option>
+                              <option value="AB-">AB-</option>
+                            </select>
+                                     </div>
+
+                                     
+                                   <div class="mb-3">
+                                    <label for="bloodGroup" class="form-label">Gender</label>
+                            
+                                <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.gender"
+                                #maritalStatus="ngModel">
+                          <option value="">Select</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                           
+                                     </div>
+              
+                                     <div class="mb-3">
+                                        <label for="bloodGroup" class="form-label">Marital Status: </label>
+                                 
+                                        <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.maritalstatus" required
+                                        #maritalStatus="ngModel">
+                                  <option value="" >Select</option>
+                                  <option value="married">Married</option>
+                                  <option value="unmarried">Unmarried</option>
+                                </select>
+                                   
+                                       </div>
+
+
+                                       <div *ngIf="addEmployeeRequest.maritalstatus === 'married'">
+                                        <label for="spouseName">Spouse Name:</label>
+                                        <input type="text" id="spouseName" name="spouseName" [(ngModel)]="addEmployeeRequest.spousename" required>
+                                      </div>
+
+
+                                     
+
+              
+                                     
+              
+                                         <div class="EmployeeAddress">
+                                          <h3>Employee Address</h3>
+                                           
+                                          <div class="presentAddress">
+                                           <h4>Present Address</h4>
+                                           <tr>
+                                            <td>
+                                              <div class="mb-3">
+                                              
+                                              <div>  <label for="village" class="form-label">Division</label></div>
+                                               
+                                               <select  class="dropDowns" id="preDivision" name="preDivision" (change)="GetDistrict(addEmployeeRequest.presentaddresses[0].division)"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].division">
+                                                  <option value="">Select</option>
+                                                  <option *ngFor="let address of employeList" [value]="address.name">{{address.name}}</option>
+                                                </select>
+                                                 </div>
+                                            </td>
+
+
+                                          <td>
+                                              <div class="mb-3">
+                                              
+                                              <div>  <label for="village" class="form-label">District</label></div>
+                                               
+                                                <select  class="dropDowns" id="predistrict" name="predistrict" (change)="GetThana(addEmployeeRequest.presentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.presentaddresses[0].district">
+                                                  <option value="">Select</option>
+                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                                <option *ngFor="let dist of this.d" [value]="dist.name">{{dist.name}}</option>
+                                                
+                                                </select>
+                                                 </div>
+                                            </td>
+ 
+
+                                           
+
+                                            <!-- <td>
+
+                                              <div class="mb-3">
+                                                <label for="village" class="form-label">District</label>
+                                                <input type="text"name="district" [(ngModel)]="addEmployeeRequest.presentaddresses[0].district"
+                                                 class="form-control"  id="district" aria-describedby="emailHelp">
+                                                 </div>
+
+
+                                            </td> -->
+                                            <td>
+                                              <div class="mb-3">
+                                              
+                                                <div><label for="village" class="form-label">Thana</label></div>
+                                               
+                                                <select  class="dropDowns" id="preThana" name="preThana"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].thana">
+                                                  <option value="">Select</option>
+                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                                <option *ngFor="let dist of this.t" [value]="dist.name">{{dist.name}}</option>
+                                                
+                                                </select>
+                                                 </div>
+                                            </td>
+                                            <td>
+                                                <div class="mb-3">
+                                                    <label for="village" class="form-label">Postoffice</label>
+                                                    <input type="text"name="prepostoffice" [(ngModel)]="addEmployeeRequest.presentaddresses[0].postoffice"
+                                                     class="form-control"  id="prepostoffice" aria-describedby="emailHelp">
+                                                     </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="mb-3">
+                                                    <label for="village" class="form-label">Village</label>
+                                                    <input type="text"name="previllage" [(ngModel)]="addEmployeeRequest.presentaddresses[0].village"
+                                                     class="form-control"  id="previllage" aria-describedby="emailHelp">
+                                                     </div>
+                                            </td>
+                                           </tr>
+                                          </div>
+
+                                          <div>
+                                            <label>
+                                              <input type="checkbox" (click)="autoFillupAdderss()">
+                                              Same as Present Address
+                                            </label>
+                                          </div>
+
+
+                                          <div class="parmanentAddress">
+                                            <h4>Parmanent Address</h4>
+                                            <tr>
+                                             <td>
+                                              <div class="mb-3">
+                                              
+                                               <div> <label for="village" class="form-label">Division</label></div>
+                                               
+                                                <select  class="dropDowns" id="parDivision" name="parDivision" (change)="ParDistrict(addEmployeeRequest.parmanentaddresses[0].division)" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].division">
+                                                  <option value="">Select</option>
+                                                  <option    *ngFor="let address of employeList" [value]="address.name">{{address.name}}</option>
+                                                </select>
+                                                 </div>
+                                             </td>
+                                             <td>
+                                              <div class="mb-3">
+                                              
+                                               <div> <label for="village" class="form-label">District</label></div>
+                                               
+                                                <select  class="dropDowns" id="pardistrict" name="pardistrict" (change)="GetparThana(addEmployeeRequest.parmanentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].district">
+                                                  <option value="">Select</option>
+                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                                <option *ngFor="let dist of this.ParD" [value]="dist.name">{{dist.name}}</option>
+                                                
+                                                </select>
+                                                 </div>
+                                             </td>
+                                             <td>
+                                              <div class="mb-3">
+                                              
+                                               <div> <label for="village" class="form-label">Thana</label></div>
+                                               
+                                                <select  class="dropDowns" id="parthana" name="parthana"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].thana">
+                                                  <option value="">Select</option>
+                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                                <option *ngFor="let dist of this.PThana" [value]="dist.name">{{dist.name}}</option>
+                                                
+                                                </select>
+                                                 </div>
+                                             </td>
+                                             <td>
+                                                 <div class="mb-3">
+                                                     <label for="village" class="form-label">Postoffice</label>
+                                                     <input type="text"name="parpostoffice" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].postoffice"
+                                                      class="form-control"  id="postoffice" aria-describedby="emailHelp">
+                                                      </div>
+                                             </td>
+ 
+                                             <td>
+                                                 <div class="mb-3">
+                                                     <label for="village" class="form-label">Village</label>
+                                                     <input type="text"name="parvillage" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].village"
+                                                      class="form-control"  id="parvillage" aria-describedby="emailHelp">
+                                                      </div>
+                                             </td>
+                                            </tr>
+                                           </div>
+              
+                                         
+                                         </div>
+              
+                                         
+                                         <div class="mb-3">
+                                          <label for="interviewDare" class="form-label">Interview Date</label>
+                                          <input type="date"name="interviewDare" [(ngModel)]="addEmployeeRequest.interviewdate"
+                                           class="form-control"  id="interviewDare" aria-describedby="emailHelp">
+                                           </div>
+              
+                                           <div class="mb-3">
+                                            <label for="appliedPost" class="form-label">Applied Post</label>
+                                            <input type="text"name="appliedPost" [(ngModel)]="addEmployeeRequest.appliedpost"
+                                             class="form-control"  id="appliedPost" aria-describedby="emailHelp">
+                                             </div>
+              
+                
+              
+                                             <div class="mb-3">
+                                              <label for="expectedSelary" class="form-label">Expected Selary</label>
+                                              <input type="number" name="expectedSelary" [(ngModel)]="addEmployeeRequest.expectedselery"
+                                               class="form-control"  id="expectedSelary" aria-describedby="emailHelp">
+                                               </div>
+              
+                                               <div class="mb-3">
+                                                <label for="appliedBy" class="form-label">AppliedBy</label>
+                                                <input type="text"name="appliedBy" [(ngModel)]="addEmployeeRequest.appliedby"
+                                                 class="form-control"  id="appliedBy" aria-describedby="emailHelp">
+                                                 </div>
+              
+                                                 <!-- <div  class="AcademicQulification container">
+                                                  <h1 class="font-weight-bold text-center" >Accademic Qualification</h1>
+                                                  <hr>
+                                                  <tr>
+                                                    <td class="first-column"> </td>
+                                                    <td>Degree</td>
+                                                    <td>University</td>
+                                                    <td>Instution</td>
+                                                    <td>Major</td>
+                                                    <td>Result</td>
+                                                    <td>Passing Year</td>
+                                                </tr>
+                                                        
+                                                  
+                                              
+                                                  <tr>
+                                                    <td>SSC </td>
+                                                   
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="degree" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].degree"
+                                                         class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="university" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].board"
+                                                         class="form-control"  id="university" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="instution" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].instution"
+                                                         class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="major" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].major"
+                                                         class="form-control"  id="major" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="result" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].result"
+                                                         class="form-control"  id="result" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="passingYear" [(ngModel)]="addEmployeeRequest.accademicqulifications[0].passingyear"
+                                                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                  </tr>
+                                                 
+                                                  <tr>
+                                                    <td>HSC or Diploma   </td>
+                                                   
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="degree" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].degree"
+                                                         class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="university" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].board"
+                                                         class="form-control"  id="university" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="instution" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].instution"
+                                                         class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="major" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].major"
+                                                         class="form-control"  id="major" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="result" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].result"
+                                                         class="form-control"  id="result" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                      
+                                                        <input type="number"name="passingYear" [(ngModel)]="addEmployeeRequest.accademicqulifications[1].passingyear"
+                                                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                  </tr>
+
+                                                
+                                                  <tr>
+                                                    <td>Honours or Degree   </td>
+                                                   
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="degree" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].degree"
+                                                         class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="university" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].board"
+                                                         class="form-control"  id="university" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="instution" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].instution"
+                                                         class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="major" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].major"
+                                                         class="form-control"  id="major" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="result" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].result"
+                                                         class="form-control"  id="result" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                      
+                                                        <input type="number"name="passingYear" [(ngModel)]="addEmployeeRequest.accademicqulifications[2].passingyear"
+                                                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                  </tr>
+
+                                               
+                                                  <tr>
+                                                    <td>  Masters  </td>
+                                                   
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="degree" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].degree"
+                                                         class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="university" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].board"
+                                                         class="form-control"  id="university" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="instution" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].instution"
+                                                         class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="major" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].major"
+                                                         class="form-control"  id="major" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="result" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].result"
+                                                         class="form-control"  id="result" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                     
+                                                        <input type="number"name="passingYear" [(ngModel)]="addEmployeeRequest.accademicqulifications[3].passingyear"
+                                                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                  </tr>
+
+                                                  <tr>
+                                                    <td>  Others  </td>
+                                                   
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="degree" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].degree"
+                                                         class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="university" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].board"
+                                                         class="form-control"  id="university" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                      <div class="mb-3">
+                                                        
+                                                        <input type="text"name="instution" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].instution"
+                                                         class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="text"name="major" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].major"
+                                                         class="form-control"  id="major" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                       
+                                                        <input type="number"name="result" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].result"
+                                                         class="form-control"  id="result" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+              
+                                                    <td>
+                                                      <div class="mb-3">
+                                                      
+                                                        <input type="number"name="passingYear" [(ngModel)]="addEmployeeRequest.accademicqulifications[4].passingyear"
+                                                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                                                         </div>
+                                                    </td>
+                                                  </tr>
+                                                </div> -->
+
+
+
+                                                <div class="AcademicQulification container">
+                                                  <h1 class="font-weight-bold text-center" >Accademic Qualification</h1>
+                                                  <hr>
+                                                  <tr>
+                                                    <td class="first-column"> </td>
+                                                    <td>Degree</td>
+                                                    <td>University</td>
+                                                    <td>Instution</td>
+                                                    <td>Major</td>
+                                                    <td>Result</td>
+                                                    <td>	Passing Year</td>
+                                                </tr>
+                                               
+                                                <tr *ngFor="let qulification of addEmployeeRequest.accademicqulifications; let i = index">
+                                                  <td scope="row">{{qualificationType[i]}}</td>
+                                                  
+
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="text"name="degree" [(ngModel)]="qulification.degree"
+                                                       class="form-control"  id="degree" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="text"name="board" [(ngModel)]="qulification.board"
+                                                       class="form-control"  id="board" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="text"name="instution" [(ngModel)]="qulification.instution"
+                                                       class="form-control"  id="instution" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="text"name="major" [(ngModel)]="qulification.major"
+                                                       class="form-control"  id="major" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+
+
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="number"name="result" [(ngModel)]="qulification.result"
+                                                       class="form-control"  id="result" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+
+                                                  <td>
+                                                    <div class="mb-3">
+                                                    <input type="number"name="passingyear" [(ngModel)]="qulification.passingyear"
+                                                       class="form-control"  id="passingyear" aria-describedby="emailHelp">
+                                                       </div>
+                                                  </td>
+
+
+     
+                                                               
+                                                                      
+                                                </tr>
+                                              
+                                              </div>
+
+
+
+
+
+
+                                                 
+
+<div class="workExperience container">
+    <h1 class="font-weight-bold text-center" >Work Experience</h1>
+    <hr>
+    <tr>
+      <td class="first-column"> </td>
+      <td>Post</td>
+      <td>Organization</td>
+      <td>Joblocation</td>
+      <td>Selery</td>
+      <td>Reporting to</td>
+      <td>Default Product</td>
+  </tr>
+ 
+  <tr *ngFor="let experience of addEmployeeRequest.experiences; let i = index">
+    <td></td>
+    <td> <div class="mb-3">
+        <input type="text"name="passingYear" [(ngModel)]="experience.post"
+         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+         </div></td>
+         <td> <div class="mb-3">
+            <input type="text"name="passingYear" [(ngModel)]="experience.organization"
+             class="form-control"  id="passingYear" aria-describedby="emailHelp">
+             </div></td>
+             <td> <div class="mb-3">
+                <input type="text"name="passingYear" [(ngModel)]="experience.joblocation"
+                 class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                 </div></td>
+                 <td> <div class="mb-3">
+                    <input type="number"name="passingYear" [(ngModel)]="experience.selery"
+                     class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                     </div></td>
+                     <td> <div class="mb-3">
+                        <input type="text"name="passingYear" [(ngModel)]="experience.reportingto"
+                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                         </div></td>
+                         <td> <div class="mb-3">
+                            <input type="text"name="passingYear" [(ngModel)]="experience.defaultproduct"
+                             class="form-control"  id="passingYear" aria-describedby="emailHelp">
+                             </div></td>
+  </tr>
+
+</div>
+
+
+
+<!-- <div>
+  
+  <label for="productCode">Product Code:</label>
+  <input type="text" (change)="SameFathername()" id="productCode" [(ngModel)]="productCode" required>
+  
+</div> -->
+                                        
+              
+                                                 
+                                              
+
+
+
+                                               
+              
+                                               
+              
+                                                
+<div>
+  <div><label>Upload Image</label></div>
+  <input type="file" (change)="onFileChange($event)"  [(ngModel)]="productCode" multiple>
+  <!-- <input type="text" id="productCode" [(ngModel)]="productCode" required> -->
+  <!-- <button (click)="uploadImages()">Upload Images</button> -->
+</div>
+
+  <button (click)="uploadImages()"  type="submit" class="btn btnb btn-primary btn-lg btn-block">Submit</button>    
+                 
+                </form>
+             
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</ng-template>
+
+ 
+  

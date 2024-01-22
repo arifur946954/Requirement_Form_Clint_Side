@@ -1,0 +1,69 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="">
+                            <form [formGroup]="loginForm" class="container">
+                              <div class="container my-5" >
+                               
+                                  <h1 class="mb-3 h3 text-center">Login Now</h1>
+                              </div>
+                        
+                                     <div class="mb-3">
+                                        <label for="email" class="form-label"></label>
+                                        <input formControlName="email" placeholder="email" type="email" 
+                                       class="form-control"  id="email" aria-describedby="emailHelp" required minlength="4">
+                                       <div
+                                                   *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')" 
+                                                  class="text-danger">
+                                                  *Email is required
+                                                </div>
+                                         </div>
+                                         <!-- <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')" class="text-danger">*Email is required</small> -->
+
+                                         <div class="mb-3">
+                                            <label for="password" class="form-label"></label>
+                                            <input formControlName="password" placeholder="password" type="password" 
+                                           class="form-control"  id="password" aria-describedby="emailHelp" required minlength="4">
+                                           <div
+                                                   *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" 
+                                                  class="text-danger">
+                                                  *Password is required
+                                                </div>
+                                             </div>
+                                             <!-- <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*password is required</small> -->
+                                        
+                        
+                                       
+                        
+                                            <div>Not register yet <a class="regitext" id="Register" routerLink="/register">Register</a></div>
+                                             <button (click)="onSubmit()" type="button" class="btnb btn btn-primary">Submit</button>
+                                             <!-- <button  (click)="onSubmit()" type="button">submit</button> -->
+                                             <!-- <button [disabled]="loginForm.invalid" type="submit" class="btnb">Submit</button> -->
+
+                              </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
