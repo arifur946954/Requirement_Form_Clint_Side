@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm=this.fb.group({
-      email:[' ',Validators.required],
-      password:[' ',Validators.required],
+      email:['',Validators.required],
+      password:['',Validators.required],
     })
   }
 
@@ -27,14 +27,20 @@ console.log(this.loginForm.value);
 this.employeeService.login(this.loginForm.value)
 
 .subscribe({next:(res)=>{
-  //this.employeeService.StoreToken(res.token)
+  // this.employeeService.StoreToken(res.token)
   //alert(res.message);
-
   this.loginForm.reset();
+  
   this.employeeService.StoreToken(res.token);
-  let tokenPayload=this.employeeService.decodeToken();
+  const tokenPayload=this.employeeService.decodeToken();
+ 
   this.employeeService.setEmailFromStore(tokenPayload.email);
-  this.router.navigate(['empapply'])
+
+  this.employeeService.setNameFromStore(tokenPayload.name);
+  this.employeeService.setRoleFromToken(tokenPayload.role);
+  this.employeeService.setMobileFromStore(tokenPayload.mobilephone);
+  
+  this.router.navigate(['Home'])
 },
 error:(err)=>{alert(err.error.message)}
 })

@@ -9,7 +9,7 @@ import { EmployeeServiceService } from 'src/app/service/employee-service.service
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
- 
+ public role:string='';
   employeList:Employee[]=[];
   getEmployeeById:Employee[]=[];
   employeeDelete:any[]=[];
@@ -20,6 +20,12 @@ export class AdminComponent implements OnInit {
   constructor(private employeeService: EmployeeServiceService,private router:Router) { }
 
   ngOnInit(): void {
+  //   this.employeeService.getUser()
+  //   .subscribe({
+  //     next:(employees)=>{
+  //       console.log(employees)
+  //       this.employeList=employees
+  // }},)
   
     this.employeeService.GetAllEmployee()
     .subscribe({
@@ -34,6 +40,15 @@ export class AdminComponent implements OnInit {
   
       let emailFromToken=this.employeeService.getEmailnamefromToken();
       this.email=val || emailFromToken
+    })
+
+    this.employeeService.getRoleFromStore().subscribe(rol=>{
+  
+      let role=this.employeeService.getNamefromToken();
+      this.role=rol || role
+    
+      //this.addEmployeeRequest.name=this.name
+      console.log("Role", this.role)
     })
 
 

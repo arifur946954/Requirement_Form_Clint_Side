@@ -6,9 +6,13 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ApiService {
-  ApiUser:string="https://localhost:7099/api/Register"
+  //ApiUser:string="https://localhost:7099/api/Admin"
+  constructor(private http:HttpClient,private router:Router) { }
+
+// getUser(){
+// return this.http.get<any>(this.ApiUser);
+
+// }
   
 
-
-  constructor(private http:HttpClient,private router:Router) { }
 }

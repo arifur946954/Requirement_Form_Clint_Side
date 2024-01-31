@@ -10,7 +10,7 @@ export interface Employee{
     fathername:string;
     mothername:string;
     nid:string;
-    dateofbirthd:Date;
+    dateofbirthd:any;
     birthplace:string;
     religion:string;
     bloodgroup:string;
@@ -19,10 +19,10 @@ export interface Employee{
     maritalstatus:string;
     spousename:string;
     email:string;
-    interviewdate:Date;
+    interviewdate:any;
     appliedpost:string;
-    probablyjoiningdate:Date;
-    expectedselery:number;
+    probablyjoiningdate:any;
+    expectedselery:any;
     appliedby:string;
 
     accademicqulifications:accademicQualification[];

@@ -17,6 +17,8 @@ export class EmployeeServiceService {
   private key = 'registrationData';
   private email$=new BehaviorSubject<string>("");
   private role$=new BehaviorSubject<string>("");
+  private Mobilenumber$=new BehaviorSubject<string>("");
+  private name$=new BehaviorSubject<string>("");
 
 
  
@@ -41,6 +43,10 @@ ThanaUrl:string="https://localhost:7099/api/Address/Dis?name="
 
     this.userpayload=this.decodeToken();
    }
+   //admin user acxcess
+   getUser(){
+    return this.http.get<Employee[]>(this.adminApiUrl);
+   }
   //dashboard for token
   public getRoleFromStore(){
     return this.role$.asObservable();
@@ -57,8 +63,32 @@ ThanaUrl:string="https://localhost:7099/api/Address/Dis?name="
 
   public setEmailFromStore(email:string){
    
-    this.email$.next(email)
+   this.email$.next(email)
   }
+//name
+  public getNameFromStore(){
+
+    return this.name$.asObservable();
+  }
+//name
+  public setNameFromStore(name:string){
+  
+   this.name$.next(name)
+  }
+
+  //mobilenumber
+  public getMobileFromStore(){
+
+    return this.Mobilenumber$.asObservable();
+  }
+//mobilenumber
+  public setMobileFromStore(Mobilenumber:string){
+
+    
+   this.Mobilenumber$.next(Mobilenumber)
+  }
+
+
    
 
   login(loginObj:any){
@@ -175,10 +205,11 @@ islogin():boolean{
 //token decoding
 decodeToken(){
   const jwtHelper=new JwtHelperService();
+
   const token=this.getToken()!;
    let x=jwtHelper.decodeToken(token);
   
-   console.log(x);
+   console.log("Tocken",x);
  
   return jwtHelper.decodeToken(token);
  
@@ -187,14 +218,31 @@ decodeToken(){
 
 getEmailnamefromToken(){
   if(this.userpayload)
- //debugger
+
   return this.userpayload.email;
+  console.log("Email is",this.userpayload.email);
 }
 
 getRolefromToken(){
   if(this.userpayload)
-   //debugger
+   
   return this.userpayload.role;
+  console.log("Role is",this.userpayload.role);
+}
+//name
+getNamefromToken(){
+  if(this.userpayload)
+   //debugger
+  return this.userpayload.name;
+  console.log("name is",this.userpayload.name);
+}
+//mobile
+getMobileNumberfromToken(){
+  if(this.userpayload)
+   //mobile="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone";
+  return this.userpayload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone"];
+  
+
 }
 
 
@@ -217,6 +265,16 @@ getEmail(): string | null {
   const registrationData = this.getRegistrationData();
   return registrationData ? registrationData.email : null;
 }
+
+// getName(): string | null {
+//   const registrationData = this.getRegistrationData();
+//   return registrationData ? registrationData.name : null;
+// }
+
+// getmobile(): string | null {
+//   const registrationData = this.getRegistrationData();
+//   return registrationData ? registrationData.Mobilenumber : null;
+// }
 
 
 

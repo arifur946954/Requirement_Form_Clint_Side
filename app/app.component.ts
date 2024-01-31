@@ -8,6 +8,8 @@ import { EmployeeServiceService } from './service/employee-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public role:string='';
+ 
   constructor(private employeeService: EmployeeServiceService) { }
   onSubmit(form: NgForm) {
     // stop here if form is invalid
@@ -17,6 +19,23 @@ export class AppComponent {
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(form.value, null, 4));
 }
+//this is for test
+AdminForm(): void {
+
+  this.employeeService.getRoleFromStore().subscribe(rol=>{
+  
+    let role=this.employeeService.getRolefromToken();
+    this.role=rol || role
+  
+    //this.addEmployeeRequest.name=this.name
+    console.log("Role", this.role)
+  })
+}
+
+
+
+
+
 
 logout(){
   this.employeeService.signOut();

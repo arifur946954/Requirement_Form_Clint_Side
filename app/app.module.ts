@@ -13,6 +13,7 @@ import { AdminComponent } from './Component/Admin/admin/admin.component';
 import { AddImageComponent } from './Component/Employee/Image_CV/Image/add-image/add-image.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ViewEmployeeComponent } from './Component/Admin/view-employee/view-employee.component';
+import { HomeComponent } from './Component/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ViewEmployeeComponent } from './Component/Admin/view-employee/view-empl
     AdminComponent,
     AddImageComponent,
     ViewEmployeeComponent,
+    HomeComponent,
   
    
   ],

@@ -4,8 +4,8 @@ export interface accademicQualification{
     board:string;
     instution:string;
     major:string;
-    result:number;
-    passingyear:number;
+    result:any;
+    passingyear:any;
     employeeId:number;
 
 }

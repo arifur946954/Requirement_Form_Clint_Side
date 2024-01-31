@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeServiceService } from 'src/app/service/employee-service.service';
 import formValidate from '../../Helper/FormValidate';
@@ -12,6 +12,10 @@ import { Register } from 'src/app/model/Register';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  // registerForm: FormGroup = new FormGroup({
+  //   password: new FormControl(''),
+  //   mobilenumber:new FormControl('')
+  // })
     submitted = false;
     registrationData: any = {};
 
@@ -30,11 +34,13 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  get f() { return this.registerForm.controls; }
+  
+
+  get f():{[key: string]: AbstractControl} { return this.registerForm.controls; }
 
   onRegister(){
- 
-    if(this.registerForm.valid){
+    // if(this.registerForm.valid){}
+    if(this.registerForm){
       const registerData:Register=this.registerForm.value
       //this.registerDataService.setRegisterData(registerData);//exttra
 

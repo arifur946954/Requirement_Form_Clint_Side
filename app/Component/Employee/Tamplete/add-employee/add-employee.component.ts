@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/model/Employee';
 import { Register } from 'src/app/model/Register';
@@ -18,15 +18,19 @@ export class AddEmployeeComponent implements OnInit {
   qualificationType = ['SSC', 'HSC Or Diploma ', 'Bachelor or Degree ', 'Master', 'PhD or Other '];
   //for image upload
   selectedFiles: FileList | null = null;
+  useSameAddress: boolean = false;
+ 
   
   productCode: string = '';
   EmailLength:number=0;
+  mobile:any;
 
   //test
   employeList:Division[]=[];
   paremployeList:Division[]=[];
   retrievedData: any;
   emails:any;
+  names:any
 
  
   districts:any[]=[];
@@ -93,15 +97,18 @@ addReg:Register={
 }
 
 email:string='';
+mobilenumber:any;
+name:string='';
+role:string='';
 
   addEmployeeRequest:Employee={
     employeeId:0,
     mobilenumber:'',
     name:'',
-    fathername:' ',
+    fathername:'',
     mothername:'',
     nid:'',
-    dateofbirthd:new Date,
+    dateofbirthd:null,
     birthplace:'',
     religion:'',
     bloodgroup:'',
@@ -109,28 +116,28 @@ email:string='';
     maritalstatus:'',
     spousename:'',
     email:'',
-    interviewdate:new Date,
+    interviewdate:null,
     appliedpost:'',
-    probablyjoiningdate:new Date,
-    expectedselery:0,
+    probablyjoiningdate:null,
+    expectedselery:null,
     appliedby:'',
    
 
 
 
   accademicqulifications:[
-  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:0,passingyear:0,employeeId:0},
-  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:0,passingyear:0,employeeId:0},
-  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:0,passingyear:0,employeeId:0},
-  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:0,passingyear:0,employeeId:0},
-  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:0,passingyear:0,employeeId:0},
+  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:null,passingyear:null,employeeId:0},
+  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:null,passingyear:null,employeeId:0},
+  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:null,passingyear:null,employeeId:0},
+  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:null,passingyear:null,employeeId:0},
+  {accQlfId:0, degree:'',  board:'', instution:'',major:'',result:null,passingyear:null,employeeId:0},
 
   ],
   experiences:[
-    {expId:0, post:'',organization:'',joblocation:'',selery:0,reportingto:'',defaultproduct:'',employeeId:0},
-     {expId:0, post:'',organization:'',joblocation:'',selery:0,reportingto:'',defaultproduct:'',employeeId:0},
-     {expId:0, post:'',organization:'',joblocation:'',selery:0,reportingto:'',defaultproduct:'',employeeId:0},
-     {expId:0, post:'',organization:'',joblocation:'',selery:0,reportingto:'',defaultproduct:'',employeeId:0},
+    {expId:0, post:'',organization:'',joblocation:'',selery:null,reportingto:'',defaultproduct:'',employeeId:0},
+     {expId:0, post:'',organization:'',joblocation:'',selery:null,reportingto:'',defaultproduct:'',employeeId:0},
+     {expId:0, post:' ',organization:' ',joblocation:' ',selery:null,reportingto:' ',defaultproduct:' ',employeeId:0},
+     {expId:0, post:' ',organization:' ',joblocation:' ',selery:null,reportingto:' ',defaultproduct:' ',employeeId:0},
     //  {expId:0, post:'',organization:'',joblocation:'',selery:0,reportingto:'',defaultproduct:'',employeeId:0},
   ],
   presentaddresses:[
@@ -145,6 +152,7 @@ email:string='';
   }
 
   autoFillupAdderss(  ){
+    this.useSameAddress = true;
     
   
     this.addEmployeeRequest.parmanentaddresses[0].division=  this.addEmployeeRequest.presentaddresses[0].division;
@@ -166,10 +174,13 @@ email:string='';
   // }
 
   constructor(private fb:FormBuilder,private http:HttpClient, private employeeService:EmployeeServiceService, private router:Router) {
-    this.emails = this.employeeService.getEmail();
+    // this.emails = this.employeeService.getEmail();
+   
+    
    }
 
   ngOnInit(): void {
+  
   
    
     //test
@@ -186,8 +197,7 @@ email:string='';
     // this.addAddress();
   
     this.employeeService.getEmailFromStore().subscribe(val=>{
-  
-      let emailFromToken=this.employeeService.getEmailnamefromToken();
+    let emailFromToken=this.employeeService.getEmailnamefromToken();
       this.email=val || emailFromToken
       //call getEmployee for data
       this.getEmployeeByEmail(this.email)
@@ -196,28 +206,58 @@ email:string='';
       this.addEmployeeRequest.email=this.email
       console.log("after", this.addEmployeeRequest.email)
     })
-
-
-
-
-  }
-
-  addEmployee(){
+    //MobileNumber
+    this.employeeService.getMobileFromStore().subscribe(mob=>{
+  
+      let name=this.employeeService.getNamefromToken();
+      this.name=mob || name
     
-    this.employeeService.TempEmployeeForm(this.addEmployeeRequest).subscribe({
-      next:(employee)=>{
-        
-        console.log(employee);
-        this.router.navigate(['']);
-      },error:(employee)=>{alert(employee.error.message)}
-    }
-    )
+      this.addEmployeeRequest.name=this.name
+      console.log("Mobile", this.addEmployeeRequest.name)
+    })
+
+     //Role
+     this.employeeService.getRoleFromStore().subscribe(rol=>{
+  
+      let role=this.employeeService.getRolefromToken();
+      this.role=rol || role
+    
+      //this.addEmployeeRequest.name=this.name
+      console.log("Role", this.role)
+    })
+
+      //Role
+      this.employeeService.getMobileFromStore().subscribe(mob=>{
+  
+        let mobileNum=this.employeeService.getMobileNumberfromToken();
+        console.log("mobile number is",mobileNum)
+        this.mobilenumber=mob || mobileNum
+        this.addEmployeeRequest.mobilenumber=this.mobilenumber
+      
+       
+      })
+
+
+
+
+
   }
+
+  // addEmployee(){
+  //   debugger
+  //   this.employeeService.TempEmployeeForm(this.addEmployeeRequest).subscribe({
+  //     next:(employee)=>{
+        
+  //       console.log(employee);
+  //       this.router.navigate(['']);
+  //     },error:(employee)=>{alert(employee.error.message)}
+  //   }
+  //   )
+  // }
 
   //get email details
   
   getEmployeeByEmail(email:string){
-    debugger
     this.employeeService.GetEmpByemail(email).subscribe({
       next:(employee)=>{
         this.email=employee.email
@@ -245,13 +285,13 @@ email:string='';
 
 //address
 GetDistrict(id:string){
-this.employeeService.GetAllDistrict(id).subscribe({
-     next:(employee)=>{
-     
-      this.Dst=employee
-    this.d= this.Dst.districts;
-    console.log(this.d);
- for(let i=0;i<this.d.length;i++ ){ } } })}
+  this.employeeService.GetAllDistrict(id).subscribe({
+       next:(employee)=>{
+       
+        this.Dst=employee
+      this.d= this.Dst.districts;
+      console.log(this.d);
+   for(let i=0;i<this.d.length;i++ ){ } } })}
 
  ParDistrict(id:string){
   this.employeeService.GetAllParDistrict(id).subscribe({
@@ -263,14 +303,14 @@ this.employeeService.GetAllDistrict(id).subscribe({
    for(let i=0;i<this.ParD.length;i++ ){ } } })}
 
 
-GetThana(id:string){
- this.employeeService.GetAllThana(id).subscribe({
-     next:(employees)=>{
-    this.thn=employees
-   this.t= this.thn.thanas;
-     console.log(this.t);
-     for(let i=0;i<this.t.length;i++ ){
-     console.log(this.t[i].name) ;  }    }  })}
+   GetThana(id:string){
+    this.employeeService.GetAllThana(id).subscribe({
+        next:(employees)=>{
+       this.thn=employees
+      this.t= this.thn.thanas;
+        console.log(this.t);
+        for(let i=0;i<this.t.length;i++ ){
+        console.log(this.t[i].name) ;  }    }  })}
 
      GetparThana(id:string){
       this.employeeService.GetAllThana(id).subscribe({
@@ -288,7 +328,7 @@ GetThana(id:string){
           }
  uploadImages(): void {
     if (!this.selectedFiles || this.selectedFiles.length === 0) {
-      alert('Please select at least one file.');
+      alert('Please Upload Image.');
       return;
     }
 
@@ -311,11 +351,26 @@ GetThana(id:string){
 
 
 
+//form validation
 
+onSubmit(form: NgForm) {
+   if (form.invalid) {
+    console.log("form is invalid")
+     return;
+ }
+  this.employeeService.TempEmployeeForm(this.addEmployeeRequest).subscribe({
+    next:(employee)=>{
+      
+      console.log(employee);
+      this.router.navigate(['']);
+    },error:(employee)=>{alert(employee.error.message)}
+  }
+  )
 
 
  
-
+ 
+}
 
 
 

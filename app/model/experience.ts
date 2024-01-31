@@ -3,7 +3,7 @@ export interface experience{
     post:string;
     organization:string;
     joblocation:string;
-    selery:number;
+    selery:any;
     reportingto:string;
     defaultproduct:string;
     employeeId:number;

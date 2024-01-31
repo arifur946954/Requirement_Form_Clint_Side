@@ -13,7 +13,7 @@
                         
                                      <div class="mb-3">
                                         <label for="mobilenumber" class="form-label"></label>
-                                        <input class="form-control"  formControlName="mobilenumber" placeholder="Mobile Number" type="tel" 
+                                        <input class="form-control"  formControlName="mobilenumber" placeholder="Mobile Number" type="text" 
                                        class="form-control"  id="mobilenumber" aria-describedby="emailHelp" >
 
                                     <div
@@ -56,13 +56,18 @@
                                                  <div class="mb-3">
                                                     <label for="password" class="form-label"></label>
                                                     <input formControlName="password" placeholder="Password" type="password" 
-                                                   class="form-control"  id="password" aria-describedby="emailHelp" >
+                                                   class="form-control"  id="password" aria-describedby="emailHelp"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                                   >
 
                                                    <div
                                                    *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')" 
                                                   class="text-danger">
                                                   *Password is required
                                                 </div>
+
+                                               
+                                                  
                                                      </div>
                                        
 

@@ -1,4 +1,8 @@
 
+
+
+
+
 <!-- <div><h1>hello user {{email}}</h1></div> -->
 <div><h1>{{retrievedData | json}}</h1></div>
 <!-- <div><h2>{{emails}}</h2></div> -->
@@ -17,12 +21,12 @@
             <div >
               <!-- outer class -->
               <div>
-               
+                <!-- (ngSubmit)="onSubmit(form)" -->
               </div>
               <div class="container-details">
                 <form class="container   col-sm-10"
                 
-               #form="ngForm" (ngSubmit)="addEmployee()">
+               #form="ngForm"   (ngSubmit)="onSubmit(form)" >
                   <div class="container my-5" >
                       <h1 class="mb-3 h3 text-center">Recruitment Form </h1>
                      
@@ -46,7 +50,7 @@
                     <div class="mb-3">
                     <label for="mobile"  class="form-label">Mobile Number</label>
                     
-                  <input (change)="SameAsEmail()" type="text"name="mobile" [(ngModel)]="addEmployeeRequest.mobilenumber"
+                  <input  disabled="mobile"  type="text"name="mobile" [(ngModel)]="addEmployeeRequest.mobilenumber"
                      class="form-control"   id="mobile" aria-describedby="emailHelp">
                      
                     
@@ -70,20 +74,59 @@
               
                      <div class="mb-3">
                       <label for="FullName" class="form-label">Full Name</label>
-                      <input type="text"name="FullName" [(ngModel)]="addEmployeeRequest.name"
+                      <input  type="text"name="FullName" [(ngModel)]="addEmployeeRequest.name"
                        class="form-control"  id="FullName" aria-describedby="emailHelp">
                        </div>
               
                        <div class="mb-3">
-                        <label for="fatherName" class="form-label">Father Name</label>
-                        <input type="text"name="fatherName"  [(ngModel)]="addEmployeeRequest.fathername"
-                         class="form-control"  id="fatherName" aria-describedby="emailHelp">
+                        <label  for="fatherName" class="form-label">Father Name</label>
+                        <input  (change)="SameAsEmail()" type="text"name="fatherName"  [(ngModel)]="addEmployeeRequest.fathername"
+                         class="form-control"  id="fatherName" aria-describedby="emailHelp"
+                         ngModel  #fathername="ngModel" class="form-control" 
+                         [ngClass]="{ 'is-invalid': form.submitted && fathername.invalid }" required fathername
+                         >
+                         <div *ngIf="form.submitted && fathername.errors" class="invalid-feedback">
+                          <div *ngIf="fathername.errors['required']">Father Name Name is required</div>
+                           </div>
+
+                        
                          </div>
+
+
+                              <!-- <div class="mb-3">
+                                <label for="fatherName" class="form-label">Father Name</label>
+                                <input (change)="SameAsEmail()" type="text" name="fatherName"  class="form-control"
+                                [ngModelOptions]="{standalone: true}"  [(ngModel)]="addEmployeeRequest.fathername" id="fatherName" aria-describedby="emailHelp"
+                                       #fathername="ngModel" [ngClass]="{ 'is-invalid': form.submitted && fathername.invalid }"
+                                       required>
+                                <div *ngIf="form.submitted && fathername.errors" class="invalid-feedback">
+                                    <div *ngIf="fathername.errors['required']">Father Name is required</div>
+                                </div>
+
+                        
+                         </div> -->
+
+
+
+                     
+
+
+
+
+
+
               
                          <div class="mb-3">
                           <label for="motherName" class="form-label">Mother Name</label>
-                          <input type="text"name="motherName" [(ngModel)]="addEmployeeRequest.mothername"
-                           class="form-control"  id="motherName" aria-describedby="emailHelp">
+                          <input  type="text"name="motherName" [(ngModel)]="addEmployeeRequest.mothername"
+                           class="form-control"  id="motherName" aria-describedby="emailHelp"
+                           ngModel   #mothername="ngModel" class="form-control" 
+                           [ngClass]="{ 'is-invalid': form.submitted && mothername.invalid }" required mothername
+                           >
+                           <div *ngIf="form.submitted && mothername.errors" class="invalid-feedback">
+                            <div *ngIf="mothername.errors['required']">Mother Name is required</div>
+                             </div>
+                       
                            </div>
 
 
@@ -96,39 +139,73 @@
               
                            <div class="mb-3">
                             <label for="nid" class="form-label">NID</label>
-                            <input type="number"name="nid" [(ngModel)]="addEmployeeRequest.nid"
-                             class="form-control"  id="nid" aria-describedby="emailHelp">
+                            <input  type="number"name="nid" [(ngModel)]="addEmployeeRequest.nid"
+                             class="form-control"  id="nid" aria-describedby="emailHelp"
+                             ngModel #nid="ngModel" class="form-control" 
+                           [ngClass]="{ 'is-invalid': form.submitted && nid.invalid }" required nid>
+                           
+                           <div *ngIf="form.submitted && nid.errors" class="invalid-feedback">
+                            <div *ngIf="nid.errors['required']">NID is required</div> </div>
+                            
                              </div>
               
                              <div class="mb-3">
                               <label for="dateOfBirth" class="form-label">Date Of Birth</label>
-                              <input  type="date"name="dateOfBirth" [(ngModel)]="addEmployeeRequest.dateofbirthd "
-                               class="form-control"  id="dateOfBirth" aria-describedby="emailHelp">
+                              <input   type="date"name="dateOfBirth" [(ngModel)]="addEmployeeRequest.dateofbirthd "
+                               class="form-control"  id="dateOfBirth" aria-describedby="emailHelp"
+
+                               ngModel #dateofbirthd="ngModel" class="form-control" 
+                               [ngClass]="{ 'is-invalid': form.submitted && dateofbirthd.invalid }" required dateofbirthd>
+                             <div *ngIf="form.submitted && dateofbirthd.errors" class="invalid-feedback">
+                                <div *ngIf="dateofbirthd.errors">Date Of Birth is required</div> </div>
                                </div>
               
                                <div class="mb-3">
                                 <label for="birthPlace" class="form-label">Birth Place</label>
-                                <input type="text"name="birthPlace" [(ngModel)]="addEmployeeRequest.birthplace"
-                                 class="form-control"  id="birthPlace" aria-describedby="emailHelp">
-                                 </div>
+                                <input  type="text"name="birthPlace" [(ngModel)]="addEmployeeRequest.birthplace"
+                                 class="form-control"  id="birthPlace" aria-describedby="emailHelp"
+                                 
+                                 ngModel  #birthplace="ngModel" class="form-control" 
+                                 [ngClass]="{ 'is-invalid': form.submitted && birthplace.invalid }" required >
+                                 <div *ngIf="form.submitted && birthplace.errors" class="invalid-feedback">
+                                  <div *ngIf="birthplace.errors">Birth Place is required</div> </div>
+                                 </div> 
+
+
+                                 
               
-                                 <div class="mb-3">
-                                  <label for="religion" class="form-label">Religion</label>
-                                  <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.religion"
-                                  #maritalStatus="ngModel">
-                            <option value="">Select</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Christianity">Christianity</option>
-                            <option value="Buddhism">Buddhism</option>
-                            <option value="Other">Other</option>
-                          </select>
-                                   </div>
+                                
+
+
+                                   <div class="mb-3">
+                                    <label for="religion" class="form-label">Religion</label>
+                                    <select class="dropDown" id="religion" name="religion" [(ngModel)]="addEmployeeRequest.religion"
+                                    ngModel   #religion="ngModel" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': form.submitted && religion.invalid }" required>
+                                        <option value="">Select</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Christianity">Christianity</option>
+                                        <option value="Buddhism">Buddhism</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div *ngIf="form.submitted && religion.errors" class="invalid-feedback">
+                                        <div *ngIf="religion.errors">Religion is required</div>
+                                    </div>
+                                </div>
+                                
+
+
+
+
+
               
                                    <div class="mb-3">
                                     <label  for="bloodGroup" class="form-label">Blood Group</label>
-                                    <select class="dropDown" id="bloodGroup" name="bloodGroup" [(ngModel)]="addEmployeeRequest.bloodgroup"
-                                    #maritalStatus="ngModel">
+                                    <select  class="dropDown" id="bloodGroup" name="bloodGroup" [(ngModel)]="addEmployeeRequest.bloodgroup"
+                                    ngModel  #bloodgroup="ngModel" class="form-control" 
+                                    [ngClass]="{ 'is-invalid': form.submitted && bloodgroup.invalid }" required
+                                   >
                               <option value="">Select</option>
                               <option value="A+">A+</option>
                               <option value="O+">O+</option>
@@ -140,38 +217,49 @@
                               <option value="B-">B-</option>
                               <option value="AB-">AB-</option>
                             </select>
+                            <div *ngIf="form.submitted && religion.errors" class="invalid-feedback">
+                              <div *ngIf="religion.errors">Religion is required</div>
+                          </div>
+                            
                                      </div>
 
                                      
                                    <div class="mb-3">
                                     <label for="bloodGroup" class="form-label">Gender</label>
                             
-                                <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.gender"
-                                #maritalStatus="ngModel">
+                                <select  class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.gender"
+                                ngModel  #gender="ngModel" class="form-control" 
+                                    [ngClass]="{ 'is-invalid': form.submitted && gender.invalid }" required>
                           <option value="">Select</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Other">Other</option>
                         </select>
+                        <div *ngIf="form.submitted && gender.errors" class="invalid-feedback">
+                          <div *ngIf="gender.errors">Gender is required</div>
+                      </div>
                            
                                      </div>
               
                                      <div class="mb-3">
                                         <label for="bloodGroup" class="form-label">Marital Status: </label>
                                  
-                                        <select class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.maritalstatus" required
-                                        #maritalStatus="ngModel">
+                                        <select  class="dropDown" id="maritalStatus" name="maritalStatus" [(ngModel)]="addEmployeeRequest.maritalstatus" required
+                                        ngModel   #maritalstatus="ngModel" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': form.submitted && maritalstatus.invalid }" required>
                                   <option value="" >Select</option>
                                   <option value="married">Married</option>
                                   <option value="unmarried">Unmarried</option>
                                 </select>
-                                   
+                                <div *ngIf="form.submitted && maritalstatus.errors" class="invalid-feedback">
+                                  <div *ngIf="maritalstatus.errors">Maritalstatus is required</div>
+                              </div>
                                        </div>
 
 
                                        <div *ngIf="addEmployeeRequest.maritalstatus === 'married'">
                                         <label for="spouseName">Spouse Name:</label>
-                                        <input type="text" id="spouseName" name="spouseName" [(ngModel)]="addEmployeeRequest.spousename" required>
+                                        <input class="form-control" type="text" id="spouseName" name="spouseName" [(ngModel)]="addEmployeeRequest.spousename" required>
                                       </div>
 
 
@@ -191,10 +279,16 @@
                                               
                                               <div>  <label for="village" class="form-label">Division</label></div>
                                                
-                                               <select  class="dropDowns" id="preDivision" name="preDivision" (change)="GetDistrict(addEmployeeRequest.presentaddresses[0].division)"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].division">
+                                               <select  class="dropDowns" id="preDivision" name="preDivision" (change)="GetDistrict(addEmployeeRequest.presentaddresses[0].division)"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].division"
+                                               ngModel   #division="ngModel" class="form-control" 
+                                               [ngClass]="{ 'is-invalid': form.submitted && division.invalid }" required
+                                               >
                                                   <option value="">Select</option>
                                                   <option *ngFor="let address of employeList" [value]="address.name">{{address.name}}</option>
                                                 </select>
+                                                <div *ngIf="form.submitted && division.errors" class="invalid-feedback">
+                                                  <div *ngIf="division.errors">Division is required</div>
+                                              </div>
                                                  </div>
                                             </td>
 
@@ -204,54 +298,69 @@
                                               
                                               <div>  <label for="village" class="form-label">District</label></div>
                                                
-                                                <select  class="dropDowns" id="predistrict" name="predistrict" (change)="GetThana(addEmployeeRequest.presentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.presentaddresses[0].district">
+                                                <select  class="dropDowns" id="predistrict" name="predistrict" (change)="GetThana(addEmployeeRequest.presentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.presentaddresses[0].district"
+                                                ngModel   #district="ngModel" class="form-control" 
+                                                [ngClass]="{ 'is-invalid': form.submitted && district.invalid }" required
+                                                >
                                                   <option value="">Select</option>
-                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                              
                                                 <option *ngFor="let dist of this.d" [value]="dist.name">{{dist.name}}</option>
                                                 
                                                 </select>
+                                                <div *ngIf="form.submitted && district.errors" class="invalid-feedback">
+                                                  <div *ngIf="district.errors">District is required</div>
+                                              </div>
                                                  </div>
                                             </td>
  
 
                                            
 
-                                            <!-- <td>
-
-                                              <div class="mb-3">
-                                                <label for="village" class="form-label">District</label>
-                                                <input type="text"name="district" [(ngModel)]="addEmployeeRequest.presentaddresses[0].district"
-                                                 class="form-control"  id="district" aria-describedby="emailHelp">
-                                                 </div>
-
-
-                                            </td> -->
+       
                                             <td>
                                               <div class="mb-3">
                                               
                                                 <div><label for="village" class="form-label">Thana</label></div>
                                                
-                                                <select  class="dropDowns" id="preThana" name="preThana"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].thana">
+                                                <select  class="dropDowns" id="preThana" name="preThana"  [(ngModel)]="addEmployeeRequest.presentaddresses[0].thana"
+                                                ngModel   #thana="ngModel" class="form-control" 
+                                                [ngClass]="{ 'is-invalid': form.submitted && thana.invalid }" required
+                                                >
                                                   <option value="">Select</option>
-                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
+                                               
                                                 <option *ngFor="let dist of this.t" [value]="dist.name">{{dist.name}}</option>
                                                 
                                                 </select>
+                                                <div *ngIf="form.submitted && thana.errors" class="invalid-feedback">
+                                                  <div *ngIf="thana.errors">Thana is required</div>
+                                              </div>
                                                  </div>
                                             </td>
                                             <td>
                                                 <div class="mb-3">
                                                     <label for="village" class="form-label">Postoffice</label>
-                                                    <input type="text"name="prepostoffice" [(ngModel)]="addEmployeeRequest.presentaddresses[0].postoffice"
-                                                     class="form-control"  id="prepostoffice" aria-describedby="emailHelp">
+                                                    <input  type="text"name="prepostoffice" [(ngModel)]="addEmployeeRequest.presentaddresses[0].postoffice"
+                                                     class="form-control"  id="prepostoffice" aria-describedby="emailHelp"
+                                                     ngModel   #postoffice="ngModel" class="form-control" 
+                                                     [ngClass]="{ 'is-invalid': form.submitted && postoffice.invalid }" required
+                                                     >
+                                                     <div *ngIf="form.submitted && postoffice.errors" class="invalid-feedback">
+                                                      <div *ngIf="postoffice.errors">Postoffice is required</div>
+                                                  </div>
                                                      </div>
                                             </td>
 
                                             <td>
                                                 <div class="mb-3">
                                                     <label for="village" class="form-label">Village</label>
-                                                    <input type="text"name="previllage" [(ngModel)]="addEmployeeRequest.presentaddresses[0].village"
-                                                     class="form-control"  id="previllage" aria-describedby="emailHelp">
+                                                    <input  type="text"name="previllage" [(ngModel)]="addEmployeeRequest.presentaddresses[0].village"
+                                                     class="form-control"  id="previllage" aria-describedby="emailHelp"
+                                                     ngModel  #village="ngModel" class="form-control" 
+                                                     [ngClass]="{ 'is-invalid': form.submitted && village.invalid }" required
+                                                     >
+                                                     <div *ngIf="form.submitted && village.errors" class="invalid-feedback">
+                                                      <div *ngIf="village.errors">Village is required</div>
+                                                  </div>
                                                      </div>
                                             </td>
                                            </tr>
@@ -265,7 +374,12 @@
                                           </div>
 
 
-                                          <div class="parmanentAddress">
+
+
+                                       
+
+
+                                           <div class="parmanentAddress">
                                             <h4>Parmanent Address</h4>
                                             <tr>
                                              <td>
@@ -273,10 +387,16 @@
                                               
                                                <div> <label for="village" class="form-label">Division</label></div>
                                                
-                                                <select  class="dropDowns" id="parDivision" name="parDivision" (change)="ParDistrict(addEmployeeRequest.parmanentaddresses[0].division)" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].division">
+                                                <select   class="dropDowns" id="parDivision" name="parDivision" (change)="ParDistrict(addEmployeeRequest.parmanentaddresses[0].division)" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].division"
+                                                ngModel   #pdivision="ngModel" class="form-control" 
+                                                [ngClass]="{ 'is-invalid': form.submitted && pdivision.invalid }" required
+                                                >
                                                   <option value="">Select</option>
                                                   <option    *ngFor="let address of employeList" [value]="address.name">{{address.name}}</option>
                                                 </select>
+                                                <div *ngIf="form.submitted && pdivision.errors" class="invalid-feedback">
+                                                  <div *ngIf="pdivision.errors">Division is required</div>
+                                              </div>
                                                  </div>
                                              </td>
                                              <td>
@@ -284,12 +404,23 @@
                                               
                                                <div> <label for="village" class="form-label">District</label></div>
                                                
-                                                <select  class="dropDowns" id="pardistrict" name="pardistrict" (change)="GetparThana(addEmployeeRequest.parmanentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].district">
+                                                <select  class="dropDowns" id="pardistrict" name="pardistrict" (change)="GetparThana(addEmployeeRequest.parmanentaddresses[0].district)"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].district"
+                                                ngModel   #pdistrict="ngModel" class="form-control" 
+                                                [ngClass]="{ 'is-invalid': form.submitted && pdistrict.invalid }" required
+                                                >
                                                   <option value="">Select</option>
-                                                <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
-                                                <option *ngFor="let dist of this.ParD" [value]="dist.name">{{dist.name}}</option>
+
+                                                  <ng-container *ngFor="let dist of (useSameAddress ? d : ParD)">
+                                                    <option [value]="dist.name">{{dist.name}}</option>
+                                                  </ng-container>
+                                             
+                                                <!-- <option *ngFor="let dist of this.d" [value]="dist.name">{{dist.name}}</option>
+                                                <option *ngFor="let dist of this.ParD" [value]="dist.name">{{dist.name}}</option> -->
                                                 
                                                 </select>
+                                                <div *ngIf="form.submitted && pdistrict.errors" class="invalid-feedback">
+                                                  <div *ngIf="pdistrict.errors">District is required</div>
+                                              </div>
                                                  </div>
                                              </td>
                                              <td>
@@ -297,31 +428,66 @@
                                               
                                                <div> <label for="village" class="form-label">Thana</label></div>
                                                
-                                                <select  class="dropDowns" id="parthana" name="parthana"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].thana">
+                                                <select  class="dropDowns" id="parthana" name="parthana"   [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].thana"
+                                                ngModel  #pthana="ngModel" class="form-control" 
+                                                [ngClass]="{ 'is-invalid': form.submitted && pthana.invalid }" required
+                                                >
                                                   <option value="">Select</option>
                                                 <!-- <option *ngFor="let dist of Dst" [value]="dist.Name">{{dist.Name}}</option> -->
-                                                <option *ngFor="let dist of this.PThana" [value]="dist.name">{{dist.name}}</option>
+                                                <ng-container *ngFor="let dist of (useSameAddress ? t : PThana)">
+                                                  <option [value]="dist.name">{{dist.name}}</option>
+                                                </ng-container>
+                                                <!-- <option *ngFor="let dist of this.PThana" [value]="dist.name">{{dist.name}}</option> -->
                                                 
                                                 </select>
+                                                <div *ngIf="form.submitted && pthana.errors" class="invalid-feedback">
+                                                  <div *ngIf="pthana.errors">Village is required</div>
+                                              </div>
                                                  </div>
                                              </td>
                                              <td>
                                                  <div class="mb-3">
                                                      <label for="village" class="form-label">Postoffice</label>
-                                                     <input type="text"name="parpostoffice" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].postoffice"
-                                                      class="form-control"  id="postoffice" aria-describedby="emailHelp">
+                                                     <input  type="text"name="parpostoffice" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].postoffice"
+                                                      class="form-control"  id="postoffice" aria-describedby="emailHelp"
+                                                      ngModel  #ppostoffice="ngModel" class="form-control" 
+                                                      [ngClass]="{ 'is-invalid': form.submitted && ppostoffice.invalid }" required
+                                                      >
+                                                      <div *ngIf="form.submitted && ppostoffice.errors" class="invalid-feedback">
+                                                        <div *ngIf="ppostoffice.errors['required']">Post Office is required</div>
+                                                    </div>
                                                       </div>
                                              </td>
  
                                              <td>
                                                  <div class="mb-3">
                                                      <label for="village" class="form-label">Village</label>
-                                                     <input type="text"name="parvillage" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].village"
-                                                      class="form-control"  id="parvillage" aria-describedby="emailHelp">
+                                                     <input  type="text"name="parvillage" [(ngModel)]="addEmployeeRequest.parmanentaddresses[0].village"
+                                                      class="form-control"  id="parvillage" aria-describedby="emailHelp"
+                                                      ngModel   #pvillage="ngModel" class="form-control" 
+                                                      [ngClass]="{ 'is-invalid': form.submitted && pvillage.invalid }" required
+                                                      >
+                                                      <div *ngIf="form.submitted && pvillage.errors" class="invalid-feedback">
+                                                        <div *ngIf="pvillage.errors">Village is required</div>
+                                                    </div>
                                                       </div>
                                              </td>
                                             </tr>
                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           
               
                                          
                                          </div>
@@ -329,28 +495,65 @@
                                          
                                          <div class="mb-3">
                                           <label for="interviewDare" class="form-label">Interview Date</label>
-                                          <input type="date"name="interviewDare" [(ngModel)]="addEmployeeRequest.interviewdate"
-                                           class="form-control"  id="interviewDare" aria-describedby="emailHelp">
+                                          <input  type="date"name="interviewDare" [(ngModel)]="addEmployeeRequest.interviewdate"
+                                           class="form-control"  id="interviewDare" aria-describedby="emailHelp"
+                                           ngModel  #interviewdate="ngModel" class="form-control" 
+                                           [ngClass]="{ 'is-invalid': form.submitted && interviewdate.invalid }" required
+                                           >
+                                           <div *ngIf="form.submitted && interviewdate.errors" class="invalid-feedback">
+                                            <div *ngIf="interviewdate.errors">InterView Date  is required</div>
+                                        </div>
                                            </div>
               
                                            <div class="mb-3">
                                             <label for="appliedPost" class="form-label">Applied Post</label>
-                                            <input type="text"name="appliedPost" [(ngModel)]="addEmployeeRequest.appliedpost"
-                                             class="form-control"  id="appliedPost" aria-describedby="emailHelp">
+                                            <input  type="text"name="appliedPost" [(ngModel)]="addEmployeeRequest.appliedpost"
+                                             class="form-control"  id="appliedPost" aria-describedby="emailHelp"
+                                             ngModel  #appliedpost="ngModel" class="form-control" 
+                                             [ngClass]="{ 'is-invalid': form.submitted && appliedpost.invalid }" required
+                                             >
+                                             <div *ngIf="form.submitted && appliedpost.errors" class="invalid-feedback">
+                                              <div *ngIf="appliedpost.errors">Applied Post is required</div>
+                                          </div>
                                              </div>
+
+
+                                             <div class="mb-3">
+                                              <label for="probablyjoiningdate" class="form-label">Probably Joining Date</label>
+                                              <input  type="date"name="probablyjoiningdate" [(ngModel)]="addEmployeeRequest.probablyjoiningdate"
+                                               class="form-control"  id="probablyjoiningdate" aria-describedby="emailHelp"
+                                               ngModel  #probablyjoiningdate="ngModel" class="form-control" 
+                                               [ngClass]="{ 'is-invalid': form.submitted && probablyjoiningdate.invalid }" required
+                                               >
+                                               <div *ngIf="form.submitted && probablyjoiningdate.errors" class="invalid-feedback">
+                                                <div *ngIf="probablyjoiningdate.errors">Probably Joining Date Date  is required</div>
+                                            </div>
+                                               </div>
               
                 
               
                                              <div class="mb-3">
                                               <label for="expectedSelary" class="form-label">Expected Selary</label>
-                                              <input type="number" name="expectedSelary" [(ngModel)]="addEmployeeRequest.expectedselery"
-                                               class="form-control"  id="expectedSelary" aria-describedby="emailHelp">
+                                              <input  type="number" name="expectedSelary" [(ngModel)]="addEmployeeRequest.expectedselery"
+                                               class="form-control"  id="expectedSelary" aria-describedby="emailHelp"
+                                               ngModel  #expectedselery="ngModel" class="form-control" 
+                                             [ngClass]="{ 'is-invalid': form.submitted && expectedselery.invalid }" required
+                                               >
+                                               <div *ngIf="form.submitted && expectedselery.errors" class="invalid-feedback">
+                                                <div *ngIf="expectedselery.errors">Expected Selery is required</div>
+                                            </div>
                                                </div>
               
                                                <div class="mb-3">
                                                 <label for="appliedBy" class="form-label">AppliedBy</label>
-                                                <input type="text"name="appliedBy" [(ngModel)]="addEmployeeRequest.appliedby"
-                                                 class="form-control"  id="appliedBy" aria-describedby="emailHelp">
+                                                <input  type="text"name="appliedBy" [(ngModel)]="addEmployeeRequest.appliedby"
+                                                 class="form-control"  id="appliedBy" aria-describedby="emailHelp"
+                                                 ngModel    #appliedby="ngModel" class="form-control" 
+                                                 [ngClass]="{ 'is-invalid': form.submitted && appliedby.invalid }" required
+                                                 >
+                                                 <div *ngIf="form.submitted && appliedby.errors" class="invalid-feedback">
+                                                  <div *ngIf="appliedby.errors">Applied By is required</div>
+                                              </div>
                                                  </div>
               
                                                  <!-- <div  class="AcademicQulification container">
@@ -628,7 +831,7 @@
 
 
 
-                                                <div class="AcademicQulification container">
+                                              <div class="AcademicQulification container">
                                                   <h1 class="font-weight-bold text-center" >Accademic Qualification</h1>
                                                   <hr>
                                                   <tr>
@@ -643,50 +846,104 @@
                                                
                                                 <tr *ngFor="let qulification of addEmployeeRequest.accademicqulifications; let i = index">
                                                   <td scope="row">{{qualificationType[i]}}</td>
-                                                  
+
+
+
+                                                  <!-- <td>
+                                                    <div class="mb-3">
+                                                      <input [ngModelOptions]="{standalone: true}" type="text" name="degree{{i}}" [(ngModel)]="qulification.degree" class="form-control"
+                                                             aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.degree }"
+                                                             required>
+                                                      <div *ngIf="(form.submitted && (i < 3) || form.submitted && i >= 3 && !qulification.degree)" class="invalid-feedback">
+                                                        Degree is required
+                                                      </div>
+                                                    </div>
+                                                  </td> -->
 
                                                   <td>
                                                     <div class="mb-3">
-                                                    <input type="text"name="degree" [(ngModel)]="qulification.degree"
-                                                       class="form-control"  id="degree" aria-describedby="emailHelp">
-                                                       </div>
+                                                      <input  type="text" name="degree{{i}}" [(ngModel)]="qulification.degree" class="form-control"
+                                                             aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.degree }"
+                                                             [ngModelOptions]="{standalone: i >= 3}" required>
+                                                      <div *ngIf="(form.submitted && (i <3 ) || form.submitted && i >= 3 && !qulification.degree)" class="invalid-feedback">
+                                                        Degree is required
+                                                      </div>
+                                                    </div>
                                                   </td>
-                                                  <td>
+
+
+                                               <!-- <td>
                                                     <div class="mb-3">
-                                                    <input type="text"name="board" [(ngModel)]="qulification.board"
-                                                       class="form-control"  id="board" aria-describedby="emailHelp">
-                                                       </div>
-                                                  </td>
+                                                        <input  type="text" name="degree{{i}}" [(ngModel)]="qulification.degree" class="form-control"
+                                                            aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.degree }"
+                                                            required>
+                                                         <div *ngIf="form.submitted && (i < 3) && !qulification.degree" class="invalid-feedback">
+                                                            Degree is required 
+                                                        </div> 
 
-                                                  <td>
-                                                    <div class="mb-3">
-                                                    <input type="text"name="instution" [(ngModel)]="qulification.instution"
-                                                       class="form-control"  id="instution" aria-describedby="emailHelp">
-                                                       </div>
-                                                  </td>
-
-                                                  <td>
-                                                    <div class="mb-3">
-                                                    <input type="text"name="major" [(ngModel)]="qulification.major"
-                                                       class="form-control"  id="major" aria-describedby="emailHelp">
-                                                       </div>
-                                                  </td>
+                                                        
+                                                    </div>
+                                                </td>  -->
 
 
-                                                  <td>
-                                                    <div class="mb-3">
-                                                    <input type="number"name="result" [(ngModel)]="qulification.result"
-                                                       class="form-control"  id="result" aria-describedby="emailHelp">
-                                                       </div>
-                                                  </td>
+                                                <td>
+                                                  <div class="mb-3">
+                                                      <input  type="text" name="board{{i}}" [(ngModel)]="qulification.board" class="form-control"
+                                                          aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.board }"
+                                                          [ngModelOptions]="{standalone: i >= 3}" required>
+                                                      <div *ngIf="form.submitted && (i < 3) && !qulification.board" class="invalid-feedback">
+                                                        Board is required 
+                                                      </div>
+                                                  </div>
+                                              </td>  
 
-                                                  <td>
-                                                    <div class="mb-3">
-                                                    <input type="number"name="passingyear" [(ngModel)]="qulification.passingyear"
-                                                       class="form-control"  id="passingyear" aria-describedby="emailHelp">
-                                                       </div>
-                                                  </td>
 
+                                             <td>
+                                                <div class="mb-3">
+                                                    <input  type="text" name="instution{{i}}" [(ngModel)]="qulification.instution" class="form-control"
+                                                        aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.instution }"
+                                                        [ngModelOptions]="{standalone: i >= 3}" required>
+                                                    <div *ngIf="form.submitted && (i < 3) && !qulification.instution" class="invalid-feedback">
+                                                      Instution is required 
+                                                    </div>
+                                                </div>
+                                            </td> 
+
+
+                                           <td>
+                                              <div class="mb-3">
+                                                  <input  type="text" name="major{{i}}" [(ngModel)]="qulification.major" class="form-control"
+                                                      aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.major }"
+                                                      [ngModelOptions]="{standalone: i >= 3}" required>
+                                                  <div *ngIf="form.submitted && (i < 3) && !qulification.major" class="invalid-feedback">
+                                                      Degree is required 
+                                                  </div>
+                                              </div>
+                                          </td> 
+
+                                           <td>
+                                            <div class="mb-3">
+                                                <input  type="number" name="result{{i}}" [(ngModel)]="qulification.result" class="form-control"
+                                                    aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.result }"
+                                                    [ngModelOptions]="{standalone: i >= 3}" required>
+                                                <div *ngIf="form.submitted && (i < 3) && !qulification.result" class="invalid-feedback">
+                                                  Result is required 
+                                                </div>
+                                            </div>
+                                        </td> 
+
+                                       <td>
+                                          <div class="mb-3">
+                                              <input  type="number" name="passingyear{{i}}" [(ngModel)]="qulification.passingyear" class="form-control"
+                                                  aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 3) && !qulification.passingyear }"
+                                                  [ngModelOptions]="{standalone: i >= 3}" required>
+                                              <div *ngIf="form.submitted && (i < 3) && !qulification.passingyear" class="invalid-feedback">
+                                                Passing Year is required 
+                                              </div>
+                                          </div>
+                                      </td>   
+
+                                                 
 
      
                                                                
@@ -702,7 +959,7 @@
 
                                                  
 
-<div class="workExperience container">
+ <div class="workExperience container">
     <h1 class="font-weight-bold text-center" >Work Experience</h1>
     <hr>
     <tr>
@@ -717,30 +974,105 @@
  
   <tr *ngFor="let experience of addEmployeeRequest.experiences; let i = index">
     <td></td>
-    <td> <div class="mb-3">
-        <input type="text"name="passingYear" [(ngModel)]="experience.post"
-         class="form-control"  id="passingYear" aria-describedby="emailHelp">
-         </div></td>
-         <td> <div class="mb-3">
-            <input type="text"name="passingYear" [(ngModel)]="experience.organization"
-             class="form-control"  id="passingYear" aria-describedby="emailHelp">
-             </div></td>
-             <td> <div class="mb-3">
-                <input type="text"name="passingYear" [(ngModel)]="experience.joblocation"
-                 class="form-control"  id="passingYear" aria-describedby="emailHelp">
-                 </div></td>
-                 <td> <div class="mb-3">
-                    <input type="number"name="passingYear" [(ngModel)]="experience.selery"
-                     class="form-control"  id="passingYear" aria-describedby="emailHelp">
-                     </div></td>
-                     <td> <div class="mb-3">
-                        <input type="text"name="passingYear" [(ngModel)]="experience.reportingto"
-                         class="form-control"  id="passingYear" aria-describedby="emailHelp">
-                         </div></td>
-                         <td> <div class="mb-3">
-                            <input type="text"name="passingYear" [(ngModel)]="experience.defaultproduct"
-                             class="form-control"  id="passingYear" aria-describedby="emailHelp">
-                             </div></td>
+    <td>
+      <div class="mb-3">
+        <input  type="text" name="post{{i}}" [(ngModel)]="experience.post" class="form-control"
+               aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.post }"
+               [ngModelOptions]="{standalone: i >= 2}" required>
+        <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.post)" class="invalid-feedback">
+          Post is required
+        </div>
+      </div>
+    </td>
+    
+
+    
+    <!-- <td>
+      <div class="mb-3">
+        <input  type="text" name="post{{i}}" [(ngModel)]="experience.post" class="form-control"
+               aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.post }"
+               required>
+        <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.post)" class="invalid-feedback">
+          Post is required
+        </div>
+      </div>
+    </td> -->
+
+
+
+      <!-- <td>
+        [ngModelOptions]="{standalone: true}"
+                <div class="mb-3">
+                    <input type="text" name="post{{i}}" [(ngModel)]="experience.post" class="form-control"
+                        aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.post }"
+                        required>
+                    <div *ngIf="form.submitted && (i < 2) && !experience.post" class="invalid-feedback">
+                        Post is required 
+                    </div> 
+
+                     
+                </div>
+            </td>  -->
+
+
+       <td>
+          <div class="mb-3">
+              <input type="text" name="organization{{i}}" [(ngModel)]="experience.organization" class="form-control"
+                  aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.organization }"
+                  [ngModelOptions]="{standalone: i >= 2}" required>
+                  <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.organization)" class="invalid-feedback">
+                    Organization is required
+                  </div>
+          </div>
+      </td> 
+
+
+      <td>
+        <div class="mb-3">
+            <input type="text" name="joblocation{{i}}" [(ngModel)]="experience.joblocation" class="form-control"
+                aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.joblocation }"
+                [ngModelOptions]="{standalone: i >= 2}" required>
+                <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.joblocation)" class="invalid-feedback">
+                  Joblocation is required
+                </div>
+        </div>
+    </td> 
+
+
+   <td>
+      <div class="mb-3">
+          <input type="number" name="selery{{i}}" [(ngModel)]="experience.selery" class="form-control"
+              aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.selery }"
+              [ngModelOptions]="{standalone: i >= 2}" required>
+              <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.selery)" class="invalid-feedback">
+                Selery is required
+              </div>
+      </div>
+  </td>
+
+ <td>
+    <div class="mb-3">
+        <input type="text" name="reportingto{{i}}" [(ngModel)]="experience.reportingto" class="form-control"
+            aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.reportingto }"
+            [ngModelOptions]="{standalone: i >= 2}" required>
+            <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.reportingto)" class="invalid-feedback">
+              Reportingto is required
+            </div>
+    </div>
+</td> 
+
+ <td>
+  <div class="mb-3">
+      <input type="text" name="defaultproduct{{i}}" [(ngModel)]="experience.defaultproduct" class="form-control"
+          aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': form.submitted && (i < 2) && !experience.defaultproduct }"
+          [ngModelOptions]="{standalone: i >= 2}" required>
+          <div *ngIf="(form.submitted && (i <2 ) || form.submitted && i >= 2 && !experience.defaultproduct)" class="invalid-feedback">
+            Default product is required
+          </div>
+  </div>
+</td>
+
+                  
   </tr>
 
 </div>
@@ -772,7 +1104,7 @@
   <!-- <button (click)="uploadImages()">Upload Images</button> -->
 </div>
 
-  <button (click)="uploadImages()"  type="submit" class="btn btnb btn-primary btn-lg btn-block">Submit</button>    
+  <button (click)="uploadImages()"    type="submit" class="btn btnb btn-primary btn-lg btn-block">Submit</button>    
                  
                 </form>
              

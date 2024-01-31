@@ -3,84 +3,88 @@
 <div>
    <!-- <h4>hello {{email}}</h4> -->
 </div>
-<table class="table" *ngIf="employeList && employeList.length>0">
-    <thead>
-      
-        <tr>
-            <th>Action</th>
-           
-            <!-- <th>Download</th> -->
-            <th>S/L</th>
-           
-            <th>Employee ID</th>
-           <th>Mobile Number</th>
-           <th>Email</th>
-           <th>Full Name</th>
-           <th>Father Name</th>
-           <th>Mother Name</th>
-           <th>NID</th>
-           <th>Date Of Birth</th>
-           <th>Birth Place</th>
-           <th>Religion</th>
-           <th>Blood Group</th>
-           <th>Gender</th>
-           <th>Marital Status</th>
-           <th>Spouse Name</th>
-           <!-- <th>Email</th> -->
-
-      
-
-
-     <th>Interview Date</th>
-     <th>Applied Post</th>
-     <th>Expected Selary</th>
-     <th>AppliedBy</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employeList ; let i = index"> 
+<div class="main-contnt">
+    <ng-container *ngIf="role==='Admin'">
+    <table class="table" *ngIf="employeList && employeList.length>0">
+        <thead>
           
-            <td>
-              <!-- <button class="btn-primary" routerLink="/admin/view/{{employee.employeeId}}" >View</button> -->
-              <button class="btn-primary" [routerLink]="['/admin/view', employee.employeeId, { mobile: employee.mobilenumber }]">View</button>
-            </td>
-
-           
-
-       
-           
-                <!-- <button   (click)="GetById(employee.employeeId)">Delete</button> -->
+            <tr>
+                <th>Action</th>
                
-             
-             
-            <td >{{i+1}}</td>
-            <td>{{employee.employeeId}}</td>
-            
-            <td>{{employee.mobilenumber}}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.fathername}}</td>
-            <td>{{employee.mothername}}</td>
-            <td>{{employee.nid}}</td>
-            <td>{{employee.dateofbirthd}}</td>
-            <td>{{employee.birthplace}}</td>
-            <td>{{employee.religion}}</td>
-            <td>{{employee.bloodgroup}}</td>
-            <td>{{employee.gender}}</td>
-            <td>{{employee.maritalstatus}}</td>
-            <td>{{employee.spousename}}</td>
-             <!-- <td>{{employee.email}}</td> -->
-            <td>{{employee.interviewdate}}</td>
-            <td>{{employee.appliedpost}}</td>
-            <td>{{employee.expectedselery}}</td>
-            <td>{{employee.appliedby}}</td>
-          <!-- <td><a [routerLink]="['/employees','edit',employee.id]">View</a></td> -->
-        </tr>
-    </tbody>
-
-</table>
-<p *ngIf="!employeList || employeList.length <=0">No employee Found</p>
+                <!-- <th>Download</th> -->
+                <th>S/L</th>
+               
+                <th>Employee ID</th>
+               <th>Mobile Number</th>
+               <th>Email</th>
+               <th>Full Name</th>
+               <th>Father Name</th>
+               <th>Mother Name</th>
+               <th>NID</th>
+               <th>Date Of Birth</th>
+               <th>Birth Place</th>
+               <th>Religion</th>
+               <th>Blood Group</th>
+               <th>Gender</th>
+               <th>Marital Status</th>
+               <th>Spouse Name</th>
+               <!-- <th>Email</th> -->
+    
+          
+    
+    
+         <th>Interview Date</th>
+         <th>Applied Post</th>
+         <th>Expected Selary</th>
+         <th>AppliedBy</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employeList ; let i = index"> 
+              
+                <td>
+                  <!-- <button class="btn-primary" routerLink="/admin/view/{{employee.employeeId}}" >View</button> -->
+                  <button class="btn-primary" [routerLink]="['/admin/view', employee.employeeId, { mobile: employee.mobilenumber }]">View</button>
+                </td>
+    
+               
+    
+           
+               
+                    <!-- <button   (click)="GetById(employee.employeeId)">Delete</button> -->
+                   
+                 
+                 
+                <td >{{i+1}}</td>
+                <td>{{employee.employeeId}}</td>
+                
+                <td>{{employee.mobilenumber}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.fathername}}</td>
+                <td>{{employee.mothername}}</td>
+                <td>{{employee.nid}}</td>
+                <td>{{employee.dateofbirthd}}</td>
+                <td>{{employee.birthplace}}</td>
+                <td>{{employee.religion}}</td>
+                <td>{{employee.bloodgroup}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.maritalstatus}}</td>
+                <td>{{employee.spousename}}</td>
+                 <!-- <td>{{employee.email}}</td> -->
+                <td>{{employee.interviewdate}}</td>
+                <td>{{employee.appliedpost}}</td>
+                <td>{{employee.expectedselery}}</td>
+                <td>{{employee.appliedby}}</td>
+              <!-- <td><a [routerLink]="['/employees','edit',employee.id]">View</a></td> -->
+            </tr>
+        </tbody>
+    
+    </table>
+    <p *ngIf="!employeList || employeList.length <=0">No employee Found</p>
+</ng-container>
+</div>
 
 
 
